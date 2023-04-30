@@ -1,0 +1,88 @@
+Database
+- Systematic collection of data
+- store and manipulate data in a systematic way
+
+Types of databases
+- Relational Database
+- Object Oriented Database
+- Centralized Database
+- Hierarchical Database
+- Cloud Database
+- Network Database
+
+DBMS - Database Management System
+
+Flat File System vs DBMS
+
+RDBMS
+- Relational DBMS
+
+Relational Model
+Relation - Table
+Table - collection of row and col
+
+Relational Model Concepts
+- Attribute 	- column
+- Tuple				- row
+- Degree				- total number of attributes
+- Cardinality	- total number of tuple
+- Attribute domain - each col has pre-defined value and scope
+
+
+SQL - Type of RDBMS
+
+DDL		- Data Definition Language
+DML		- Data Manipulation Language
+DCL		- Data Control Language
+TCL		- Transaction Control Language
+DQL		- Data Query Language
+
+SQL is an ANSI standard language
+
+
+Database Design
+- Logical Design
+- Physical Design
+
+Database Design Techniques
+- Normalization - used to remove redundancy of data
+	NF - Normal Form
+	- 1NF 
+			- each table cell should contain single value
+			- each records needds to be unique
+	- 2NF
+	- 3NF
+	- BCNF - Boyce Codd NF
+	- 4NF
+	- 5NF
+	- 6NF
+	
+- ER Modeling
+
+
+Keys
+- Primary Key
+- Foreign Key
+- Unique Key
+- Candidate Key
+- Super Key
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+DBMS - Database Management System
+- Hierarchical Database
+- Network Database
+- Relational Database
+- Object-Oriented
+
+Relational Database
+- Relation - Table
+
+Types of RDBMS
+SQL - Structured Query Language
+
+SQL Server and Access - Microsoft
+Oracle
+DB2 - IBM
+
+ANSI/SQL - Standardized language to access database
+- MySQL - database management system that helps you to manage relational database
+- Postgre
+
+SELECT * FROM users;
+
+Tables - row and cols
+
+Java - JDBC - MySQL
+PHP - MySQL
+Python - MySQL
+
+Application Development
+
+NoSQL - MongoDB
+
+Data Analysis
+- PowerBI
+- Tableau
+- Excel - Tables
+
+Cloud
+
+Full Stack Developer
+MEAN / MERN
+
+Big Data
+=====================================
+DBMS / RDBMS
+ACID / Normalization / Functional Dependency
+MySQL
+- Handling Database
+- Handling Table
+- Data Types
+- Keys - Primary Key, Foreign Key, Super Key, Unique Key
+- Constraints
+- Alter Table - add, delete, modify, rename...
+- CRUD Operations
+	- Select
+	- Insert
+	- Update
+	- Delete
+- Operators - AND, OR, IN, NOT, BETWEEN, LIKE, LIMIT
+- Clause
+	- Order By
+	- Where
+- Group By and Aggregate Functions
+- Joins - Inner, Left, Right, Self, Cross
+- Subquery / Nested Query
+- Functions - Date and Time, String, Math
+- Windows Functions
+- Data Partition
+- Indexing
+- Clustering
+===========================
+Advanced Sql
+PL-SQL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
