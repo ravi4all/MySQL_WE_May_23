@@ -48,11 +48,16 @@ Database Design Techniques
 - Normalization - used to remove redundancy of data
 	NF - Normal Form
 	- 1NF 
-			- each table cell should contain single value
-			- each records needds to be unique
+			Rule 1 - each table cell should contain single value
+			Rule 2 - each records needs to be unique
 	- 2NF
+			Rule 1 - it should be in 1NF
+			Rule 2 - Primary key does not functionally dependent on any subset of candidate key
 	- 3NF
-	- BCNF - Boyce Codd NF
+		Rule 1 - it should be in 2NF
+		Rule 2 - no transitive functional dependencies
+	- 3.5NF / BCNF - Boyce Codd NF
+		- if there are still some anomalies left then we use BCNF
 	- 4NF
 	- 5NF
 	- 6NF
@@ -61,11 +66,25 @@ Database Design Techniques
 
 
 Keys
-- Primary Key
+- Primary Key 
+	- it cannot be null
+	- it is always unique
 - Foreign Key
+	- it referes to primary key from another table
 - Unique Key
+	- it is also unique, but it can be null
 - Candidate Key
+	- group of attributes that can be uniquely identify
 - Super Key
+	- single key or a group of multiple keys
+
+Emp Table -> Emp_ID, Emp_Name, Emp_Email
+					->  (Emp_ID, Emp_Email), (Emp_ID, Emp_Name)
+
+
+
+
+
 
 
 

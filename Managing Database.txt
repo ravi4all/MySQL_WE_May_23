@@ -1,0 +1,19 @@
+Managing Database
+
+-> show databases;
+		- show list of all databases
+
+-> SELECT database();
+		- show current database
+
+-> CREATE DATABASE onlineshop;
+		- create new database named as onlineshop, if database already exists then show error
+
+-> CREATE DATABASE [IF NOT EXISTS] onlineshop;
+		- create database if not exists, but if database already exists then shows warning only
+
+-> USE onlineshop;
+		- switch to onlineshop database
+
+-> DROP DATABASE onlineshop;
+		- drop/delete onlineshop database
