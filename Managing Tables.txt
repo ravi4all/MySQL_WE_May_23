@@ -1,0 +1,19 @@
+Managing Tables
+
+Create Table
+Syntax -> CREATE TABLE [IF NOT EXISTS] table_name (col_name data_type constraint.... table_constraints) ENGINE = storage_engine;
+
+col_name data_type [NOT NULL] [DEFAULT VALUE] [AUTO_INCREMENT] col_constraint
+
+CREATE TABLE IF NOT EXISTS employees (emp_id INT AUTO_INCREMENT PRIMARY KEY, emp_name VARCHAR(255) NOT NULL, emp_salary INT, joining_date DATE, age tinyint, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=INNODB;
+
+DESCRIBE employees;
+
+
+
+
+
+
+
+
+

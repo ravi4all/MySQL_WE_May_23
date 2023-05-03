@@ -1,0 +1,16 @@
+Data Types
+
+Numeric
+- TinyInt				- 1 Byte
+- SmallInt			- 2 Byte
+- MediumInt			- 3 Byte
+- Int						- 4 Byte
+- BigInt				- 8 Byte
+- Decimal
+- Float
+- Double
+- Bit
+
+Text
+Date
+

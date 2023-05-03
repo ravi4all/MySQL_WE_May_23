@@ -12,8 +12,19 @@ Managing Database
 -> CREATE DATABASE [IF NOT EXISTS] onlineshop;
 		- create database if not exists, but if database already exists then shows warning only
 
+-> CREATE DATABASE [IF NOT EXISTS] db_name [CHARACTER SET charset_name] [COLLATE collation_name];
+
+-> SHOW CHARACTER SET;
+-> SET @text = CONVERT("Hello World" USING ascii);
+-> SELECT LENGTH(@text), CHAR_LENGTH(@text);
+
 -> USE onlineshop;
 		- switch to onlineshop database
 
 -> DROP DATABASE onlineshop;
 		- drop/delete onlineshop database
+
+-> DROP DATABASE [IF EXISTS] onlineshop;
+		- drop/delete onlineshop database
+
+
