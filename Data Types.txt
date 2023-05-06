@@ -6,11 +6,39 @@ Numeric
 - MediumInt			- 3 Byte
 - Int						- 4 Byte
 - BigInt				- 8 Byte
-- Decimal
-- Float
-- Double
-- Bit
+- Decimal				- fixed point decimal
+- Float					- single precision floating point number
+- Double				- double precision
+- Bit						- single bit
 
 Text
+Non-Binary
+- Char					- fixed length string	(0-255)
+- Varchar				- dynamic length string / variable length string (0-255)
+- TinyText			
+- Text
+- MediumText
+- LongText
+Binary	- if we want to store images, pdf, or any other multimedia
+- TinyBlob
+- BLOB					- Binary Large Object
+- MediumBlob
+- LongBlob
+
 Date
+- Date					- CCYY-MM-DD
+- Time					- hh:mm:ss
+- Datetime			- CCYY-MM-DD hh:mm:ss	- 1000-01-01 00:00:00 to 9999:12-31 23:59:59
+		- requires 5 bytes of memory
+- Timestamp			- CCYY-MM-DD hh:mm:ss	- 1970-01-01 00:00:01 to 2038:01-19 23:59:59
+		- requires 4 btes of memory
+- Year
+
+
+
+
+
+
+
+
 
