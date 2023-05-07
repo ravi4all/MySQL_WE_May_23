@@ -1,0 +1,20 @@
+INSERT INTO employees (emp_name, emp_salary, joining_date, age) VALUES("Ram",45000,'2019-01-01',30);
+
+INSERT INTO employees (emp_name, emp_salary, joining_date, age) VALUES("Mohit",50000,'2019-05-09',31), ("Jyoti",65000,'2020-11-12',27),("Kunal Sharma", 25000, '2019-05-09', 30),("Naman", 35000, '2016-11-18',38),("Akash", 50000, '2022-11-16', 27);
+
+
+CREATE TABLE emp_details (emp_id int, dept_name varchar(100), designation varchar(100), exp tinyint, FOREIGN KEY (emp_id) REFERENCES employees(emp_id) ON DELETE RESTRICT ON UPDATE CASCADE);
+
+Reference Options
+- Cascade - automatically deleted or updated
+- Set Null - set null in child table if parent table is updated or deleted
+- No Action - same as restrict
+- Restrict	- MySQL rejects deletion or updation (by default MySQL uses Restrict)
+
+
+INSERT INTO emp_details VALUES(1, "IT", "Developer", 3), (5, "IT", "Tester", 4), (3, "HR", "Manager", 7), (4, "HR", "Developer", 2);
+
+
+SELECT e1.emp_id, e1.emp_name, e2.dept_name FROM employees e1 INNER JOIN emp_details e2 ON e1.emp_id = e2.emp_id;
+
+SELECT e1.emp_id, e1.emp_name, e2.dept_name FROM employees e1 LEFT JOIN emp_details e2 ON e1.emp_id = e2.emp_id WHERE e2.dept_name IS NULL;
