@@ -1,0 +1,302 @@
+WildCards
+Regular Expressions - Regex
+
+Like Operator
+
+- get users whose name starts with A
+- get users whose name ends with A
+- get users whose name contains with A
+
+% - percentage
+_ - underscore
+
+a% - whose name starts with a
+%a - whose name ends with a
+%a% - whose name contains a
+
+R__
+R_m
+
+LIKE '%_m%'
+Escape Clause - \
+LIKE '%\_m%'
+
+
+Pattern
+REGEXP '^ra'
+^ - starts with
+$ - ends with
+
+
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bookinfo           |
+| chat_db            |
+| ems                |
+| information_schema |
+| mysql              |
+| onlineshop         |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> use ems;
+Database changed
+mysql> show tables;
++---------------+
+| Tables_in_ems |
++---------------+
+| departments   |
+| emp_details   |
+| employees     |
+| users         |
++---------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employees;
++--------+--------------+------------+--------------+------+---------------------+
+| emp_id | emp_name     | emp_salary | joining_date | age  | created_at          |
++--------+--------------+------------+--------------+------+---------------------+
+|      1 | Ram          |      45000 | 2019-01-01   |   30 | 2023-05-07 20:15:33 |
+|      2 | Mohit        |      50000 | 2019-05-09   |   31 | 2023-05-07 20:18:46 |
+|      3 | Jyoti        |      65000 | 2020-11-12   |   27 | 2023-05-07 20:18:46 |
+|      4 | Kunal Sharma |      25000 | 2019-05-09   |   30 | 2023-05-07 20:18:46 |
+|      5 | Naman        |      35000 | 2016-11-18   |   38 | 2023-05-07 20:18:46 |
+|      6 | Akash        |      50000 | 2022-11-16   |   27 | 2023-05-07 20:18:46 |
++--------+--------------+------------+--------------+------+---------------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE 'a%';
++--------+----------+------+
+| emp_id | emp_name | age  |
++--------+----------+------+
+|      6 | Akash    |   27 |
++--------+----------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE '%a';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      4 | Kunal Sharma |   30 |
++--------+--------------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name = 'a';
+Empty set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name = '%a';
+Empty set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE '%a%';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      1 | Ram          |   30 |
+|      4 | Kunal Sharma |   30 |
+|      5 | Naman        |   38 |
+|      6 | Akash        |   27 |
++--------+--------------+------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE 'R__';
++--------+----------+------+
+| emp_id | emp_name | age  |
++--------+----------+------+
+|      1 | Ram      |   30 |
++--------+----------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE 'R_m';
++--------+----------+------+
+| emp_id | emp_name | age  |
++--------+----------+------+
+|      1 | Ram      |   30 |
++--------+----------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE '%_m%';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      1 | Ram          |   30 |
+|      4 | Kunal Sharma |   30 |
+|      5 | Naman        |   38 |
++--------+--------------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE '%m%';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      1 | Ram          |   30 |
+|      2 | Mohit        |   31 |
+|      4 | Kunal Sharma |   30 |
+|      5 | Naman        |   38 |
++--------+--------------+------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE '%_m%';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      1 | Ram          |   30 |
+|      4 | Kunal Sharma |   30 |
+|      5 | Naman        |   38 |
++--------+--------------+------+
+3 rows in set (0.00 sec)
+
+mysql> desc employees;
++--------------+--------------+------+-----+-------------------+-------------------+
+| Field        | Type         | Null | Key | Default           | Extra             |
++--------------+--------------+------+-----+-------------------+-------------------+
+| emp_id       | int          | NO   | PRI | NULL              | auto_increment    |
+| emp_name     | varchar(255) | NO   |     | NULL              |                   |
+| emp_salary   | int          | YES  |     | NULL              |                   |
+| joining_date | date         | YES  |     | NULL              |                   |
+| age          | tinyint      | YES  |     | NULL              |                   |
+| created_at   | timestamp    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
++--------------+--------------+------+-----+-------------------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into employees (emp_name, emp_salary, joining_date, age) values ('Ra_m', 60000, '2019-10-10',41);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employees;
++--------+--------------+------------+--------------+------+---------------------+
+| emp_id | emp_name     | emp_salary | joining_date | age  | created_at          |
++--------+--------------+------------+--------------+------+---------------------+
+|      1 | Ram          |      45000 | 2019-01-01   |   30 | 2023-05-07 20:15:33 |
+|      2 | Mohit        |      50000 | 2019-05-09   |   31 | 2023-05-07 20:18:46 |
+|      3 | Jyoti        |      65000 | 2020-11-12   |   27 | 2023-05-07 20:18:46 |
+|      4 | Kunal Sharma |      25000 | 2019-05-09   |   30 | 2023-05-07 20:18:46 |
+|      5 | Naman        |      35000 | 2016-11-18   |   38 | 2023-05-07 20:18:46 |
+|      6 | Akash        |      50000 | 2022-11-16   |   27 | 2023-05-07 20:18:46 |
+|      7 | Ra_m         |      60000 | 2019-10-10   |   41 | 2023-05-14 18:07:25 |
++--------+--------------+------------+--------------+------+---------------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE '%_m%';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      1 | Ram          |   30 |
+|      4 | Kunal Sharma |   30 |
+|      5 | Naman        |   38 |
+|      7 | Ra_m         |   41 |
++--------+--------------+------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name LIKE '%\_m%';
++--------+----------+------+
+| emp_id | emp_name | age  |
++--------+----------+------+
+|      7 | Ra_m     |   41 |
++--------+----------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name REGEXP '^ra';
++--------+----------+------+
+| emp_id | emp_name | age  |
++--------+----------+------+
+|      1 | Ram      |   30 |
+|      7 | Ra_m     |   41 |
++--------+----------+------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name REGEXP 'ra$';
+Empty set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name REGEXP 'a$';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      4 | Kunal Sharma |   30 |
++--------+--------------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name REGEXP 'r|a';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      1 | Ram          |   30 |
+|      4 | Kunal Sharma |   30 |
+|      5 | Naman        |   38 |
+|      6 | Akash        |   27 |
+|      7 | Ra_m         |   41 |
++--------+--------------+------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name REGEXP '^r|^a';
++--------+----------+------+
+| emp_id | emp_name | age  |
++--------+----------+------+
+|      1 | Ram      |   30 |
+|      6 | Akash    |   27 |
+|      7 | Ra_m     |   41 |
++--------+----------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name REGEXP '[ra]';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      1 | Ram          |   30 |
+|      4 | Kunal Sharma |   30 |
+|      5 | Naman        |   38 |
+|      6 | Akash        |   27 |
+|      7 | Ra_m         |   41 |
++--------+--------------+------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name REGEXP '^[ra]';
++--------+----------+------+
+| emp_id | emp_name | age  |
++--------+----------+------+
+|      1 | Ram      |   30 |
+|      6 | Akash    |   27 |
+|      7 | Ra_m     |   41 |
++--------+----------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name REGEXP '[^ra]';
++--------+--------------+------+
+| emp_id | emp_name     | age  |
++--------+--------------+------+
+|      1 | Ram          |   30 |
+|      2 | Mohit        |   31 |
+|      3 | Jyoti        |   27 |
+|      4 | Kunal Sharma |   30 |
+|      5 | Naman        |   38 |
+|      6 | Akash        |   27 |
+|      7 | Ra_m         |   41 |
++--------+--------------+------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT emp_id, emp_name, age FROM employees WHERE emp_name REGEXP '^[ra]';
++--------+----------+------+
+| emp_id | emp_name | age  |
++--------+----------+------+
+|      1 | Ram      |   30 |
+|      6 | Akash    |   27 |
+|      7 | Ra_m     |   41 |
++--------+----------+------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+
+
