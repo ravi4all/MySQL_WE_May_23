@@ -1,0 +1,41 @@
+Group By
+
+Aggregate Functions
+- SUM, MIN ,MAX, COUNT, AVG
+
+1. How many employees are there is each department ?
+SELECT dept_name, COUNT(*) as Count FROM emp_details GROUP BY dept_name;
+
+2. Total experience in each department.
+SELECT dept_name, SUM(experience) as 'Total Experience' FROM emp_details GROUP BY dept_name;
+
+SELECT dept_name, MIN(experience) as 'Min Experience' FROM emp_details GROUP BY dept_name;
+
+SELECT dept_name, AVG(experience) as 'Avg', MAX(experience) as Max FROM emp_details GROUP BY dept_name;
+
+3. How many developers are there in IT department ?
+
+SELECT designation, COUNT(*) as Count FROM emp_details WHERE dept_name = "IT" GROUP BY designation HAVING designation = "Developer";
+
+=====================================================
+
+1. How many authors are from each country ?
+2. How many authors are from India ?
+3. How many books are priced over 100 ?
+
+=====================================================
+
+select t1.aut_id, t1.aut_name, t2.book_name, t2.book_price FROM author t1 INNER JOIN book_mast t2 ON t1.aut_id = t2.aut_id;
+
+1. Get those author names whose book name starts with 'The'.
+2. Get those authors who lives in India and pub_lang is English
+3. Get count of each book pub_lang for authors who belongs to India.
+4. How many books are published in Hindi and there price is above 100.
+5. How many book names starts with 'The'
+
+
+
+
+
+
+
