@@ -1,0 +1,30 @@
+Alter Table
+- add new col in table
+- remove col from table
+- change data type of a col
+- add primary key on a col
+- drop table
+- rename table
+
+Add col to a table
+- ALTER TABLE table_name ADD new_col col_definition [FIRST | AFTER col_name]
+
+ALTER TABLE emp_details ADD phone_no int;
+ALTER TABLE emp_details ADD phone_no int FIRST;
+ALTER TABLE emp_details ADD phone_no int AFTER emp_dept;
+
+Modify Col of a table
+ALTER TABLE emp_details MODIFY phone_no int NOT NULL;
+
+Remove Col from a table
+ALTER TABLE emp_details DROP COLUMN phone_no;
+
+Rename Column
+ALTER TABLE emp_details CHANGE COLUMN exp experience tinyint;
+
+Rename Table
+ALTER TABLE emp_details RENAME TO new_table_name;
+
+
+
+
