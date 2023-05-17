@@ -1,0 +1,18 @@
+Update Queries
+
+Syntax : Update [LOW_PRIORITY] [IGNORE] table_name SET col_name = updated_value..[WHERE];
+
+LOW_PRIORITY : It tells update statement to delay the update until we have successfully connected with table
+
+IGNORE : Continue updating rows even if rows occurred
+
+UPDATE IGNORE employees SET emp_id = 2 WHERE emp_id = 1;
+
+Delete Queries
+DELETE FROM employees WHERE emp_salary < 10000;
+
+Delete all rows from table
+DELETE FROM employees;
+
+DELETE FROM employees WHERE emp_salary < 10000 ORDER BY emp_name DESC LIMIT 5;
+
