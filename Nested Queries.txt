@@ -1,0 +1,22 @@
+Nested Queries / Sub Query
+
+SELECT emp_id, emp_name, emp_salary FROM employees WHERE emp_id IN (SELECT emp_id from emp_details WHERE designation = "Developer");
+
+SELECT emp_id, emp_name, emp_salary FROM employees WHERE emp_salary = (SELECT MAX(emp_salary) FROM employees);
+
+SELECT emp_id, emp_name, emp_salary FROM employees WHERE emp_salary > (SELECT AVG(emp_salary) FROM employees);
+
+Types of Subqueries
+- Comparisons using subquery
+- Subquery with exist or not exists
+- Correlated subquery
+- Subquery in FROM Clause
+- Subquery using Scalar Operand
+
+
+SELECT SUM(CASE WHEN designation = "Developer" THEN 1 ELSE 0 END) AS 'Developer',
+SUM(CASE WHEN designation = "Tester" THEN 1 ELSE 0 END) AS 'Tester', COUNT(*) AS Total FROM emp_details;
+
+Get the department with highest average experience.
+
+SELECT dept_name, AVG(experience) FROM emp_details group by dept_name HAVING AVG(experience) >= ALL (SELECT AVG(experience) FROM emp_details group by dept_name);
