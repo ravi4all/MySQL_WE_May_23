@@ -1,0 +1,146 @@
+Functions
+- Aggregate Functions - Min, Max, Sum, Count
+
+Control Flow Functions
+- CASE, IF
+
+String Functions
+
+Date and Time Functions
+- NOW()
+- SYSDATE()
+
+SELECT (NOW() - INTERVAL 1 HOUR) "Now - 1 Hour", NOW(), NOW() + INTERVAL 1 HOUR "NOW + 1 HOUR";
+
+SELECT (NOW() + INTERVAL 1 DAY) "Now + 1 Day", NOW(), NOW() + INTERVAL 1 DAY "NOW + 1 Day";
+
+
+Extract
+- Day, Minute, Seconds, Month, Hour, Year, Week, Time
+
+Syntax : Extract(unit FROM date)
+
+SELECT EXTRACT(DAY FROM NOW()) DAY;
+SELECT EXTRACT(HOUR FROM NOW()) HOUR;
+SELECT EXTRACT(YEAR FROM NOW()) YEAR;
+
+WEEKDAY() - 0 -> Monday.... 6 -> Sunday
+DAYOFWEEK() - 1 -> Sunday... 7 -> Saturday
+
+DATE_FORMAT()
+
+DATEDIFF()
+ - remaning days
+
+
+mysql> SELECT NOW();
++---------------------+
+| NOW()               |
++---------------------+
+| 2023-06-17 20:27:06 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DAYNAME(NOW()), WEEKDAY(NOW());
++----------------+----------------+
+| DAYNAME(NOW()) | WEEKDAY(NOW()) |
++----------------+----------------+
+| Saturday       |              5 |
++----------------+----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DAYNAME(NOW()), DAYOFWEEK(NOW());
++----------------+------------------+
+| DAYNAME(NOW()) | DAYOFWEEK(NOW()) |
++----------------+------------------+
+| Saturday       |                7 |
++----------------+------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DATE_FORMAT(curdate(), "%d/%m/%y");
++------------------------------------+
+| DATE_FORMAT(curdate(), "%d/%m/%y") |
++------------------------------------+
+| 17/06/23                           |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DATE_FORMAT(curdate(), "%d/%m/%y") as date;
++----------+
+| date     |
++----------+
+| 17/06/23 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DATE_FORMAT(curdate(), "%d-%m-%y") as date;
++----------+
+| date     |
++----------+
+| 17-06-23 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DATE_FORMAT(curdate(), "%W %D %M %Y") as date;
++-------------------------+
+| date                    |
++-------------------------+
+| Saturday 17th June 2023 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT curdate(), DATE_FORMAT(curdate(), "%W %D %M %Y") as date;
++------------+-------------------------+
+| curdate()  | date                    |
++------------+-------------------------+
+| 2023-06-17 | Saturday 17th June 2023 |
++------------+-------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT curdate(), DATE_FORMAT(curdate(), "%W %d %M %Y") as date;
++------------+-----------------------+
+| curdate()  | date                  |
++------------+-----------------------+
+| 2023-06-17 | Saturday 17 June 2023 |
++------------+-----------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT curdate(), DATE_FORMAT(curdate(), "%W %d %m %Y") as date;
++------------+---------------------+
+| curdate()  | date                |
++------------+---------------------+
+| 2023-06-17 | Saturday 17 06 2023 |
++------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT curdate(), DATE_FORMAT(curdate(), "%W %d %m %y") as date;
++------------+-------------------+
+| curdate()  | date              |
++------------+-------------------+
+| 2023-06-17 | Saturday 17 06 23 |
++------------+-------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DATEDIFF(CURDATE(), '2012-09-12');
++-----------------------------------+
+| DATEDIFF(CURDATE(), '2012-09-12') |
++-----------------------------------+
+|                              3930 |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DATEDIFF('2012-09-12', CURDATE());
++-----------------------------------+
+| DATEDIFF('2012-09-12', CURDATE()) |
++-----------------------------------+
+|                             -3930 |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+
+
+Get Age from Date of Birth
+SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(CURDATE(), '1998-09-10')), "%Y") + 0 AS Age;
+
+
+

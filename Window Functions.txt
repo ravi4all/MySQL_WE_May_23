@@ -1,0 +1,46 @@
+Window Functions
+
+create table sales (sales_emp varchar(50) not null, fiscal_year int not null, sale decimal(14,2) not null);
+
+insert into sales values ("John", 2015, 120), ("Sam", 2015, 170), ("Nick", 2015, 180), ("John", 2016, 200), ("Sam", 2016, 150), ("Nick", 2016, 250), ("John", 2017, 290), ("Sam", 2017, 200), ("Nick", 2017, 190);
+
+select fiscal_year, sum(sale) from sales group by fiscal_year;
+
+
+SELECT fiscal_year, sales_emp, sale, sum(sale) OVER (PARTITION BY fiscal_year) total_sales from sales;
+
+
+window_function_name(expression) OVER (
+	[partition_definition],
+	[order_definition],
+	[frame_definition]
+)
+
+frame is a subset of current partition
+- frame_start
+- frame_between
+
+BETWEEN frame_boundary_1 AND frame_boundary_2
+
+UNBOUNDED PRECEEDING - frame starts at the first row of the partition
+N PRECEEDING - N of rows before the first current
+CURRENT ROW - the row of the current calculation
+
+DENSE_RANK
+SELECT fiscal_year, sales_emp, sale, DENSE_RANK() OVER (PARTITION BY fiscal_year ORDER BY sale DESC) sales_rank from sales;
+
+
+RANK
+SELECT fiscal_year, sales_emp, sale, RANK() OVER (PARTITION BY fiscal_year ORDER BY sale DESC) sales_rank from sales;
+
+ROW_NUMBER
+SELECT fiscal_year, sales_emp, sale, ROW_NUMBER() OVER (PARTITION BY fiscal_year ORDER BY sale DESC) sales_rank from sales;
+
+SELECT fiscal_year, sales_emp, sale, ROW_NUMBER() OVER (ORDER BY sale DESC) sales_rank from sales;
+
+SELECT fiscal_year, sales_emp, sale, ROW_NUMBER() OVER () sales_rank from sales;
+
+FIRST_VALUE
+SELECT fiscal_year, sales_emp, sale, FIRST_VALUE(sales_emp) OVER (PARTITION BY fiscal_year ORDER BY sale ASC) least_sales from sales;
+
+SELECT fiscal_year, sales_emp, sale, FIRST_VALUE(sales_emp) OVER (PARTITION BY fiscal_year ORDER BY sale DESC) least_sales from sales;
