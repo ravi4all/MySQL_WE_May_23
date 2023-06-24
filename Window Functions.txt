@@ -43,4 +43,28 @@ SELECT fiscal_year, sales_emp, sale, ROW_NUMBER() OVER () sales_rank from sales;
 FIRST_VALUE
 SELECT fiscal_year, sales_emp, sale, FIRST_VALUE(sales_emp) OVER (PARTITION BY fiscal_year ORDER BY sale ASC) least_sales from sales;
 
-SELECT fiscal_year, sales_emp, sale, FIRST_VALUE(sales_emp) OVER (PARTITION BY fiscal_year ORDER BY sale DESC) least_sales from sales;
+SELECT fiscal_year, sales_emp, sale, FIRST_VALUE(sales_emp) OVER (PARTITION BY fiscal_year ORDER BY sale DESC) highest_sales from sales;
+
+
+Last Value
+SELECT fiscal_year, sales_emp, sale, LAST_VALUE(sales_emp) OVER (PARTITION BY fiscal_year ORDER BY sale DESC RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) least_sales from sales;
+
+
+Nth Value - 2nd highest sales
+SELECT fiscal_year, sales_emp, sale, NTH_VALUE(sales_emp,2) OVER (PARTITION BY fiscal_year ORDER BY sale DESC RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) second_highest from sales;
+
+
+Used in Time Series
+LAG - return nth row before current row
+SELECT fiscal_year, sales_emp, sale, LAG(sales_emp, 1) OVER (PARTITION BY fiscal_year ORDER BY sale DESC) highest_sales from sales;
+
+LEAD - return nth row after current row
+SELECT fiscal_year, sales_emp, sale, LEAD(sales_emp, 1) OVER (PARTITION BY fiscal_year ORDER BY sale DESC) highest_sales from sales;
+
+NTILE - distributes the rows for each window partition into a specified number of ranked groups
+
+
+
+
+
+
